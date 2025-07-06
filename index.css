@@ -9,10 +9,36 @@ body {
   margin: 1em;
 }
 
+.technology {
+  grid-area: tech;
+}
+
+.environment {
+  grid-area: envi;
+}
+
+.nasa {
+  grid-area: nasa;
+}
+
+.physics {
+  grid-area: phys;
+}
+
+.health {
+  grid-area: heal;
+}
+
 main {
   display: grid;
-  grid-template-columns: 1fr;
   gap: 1em;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    'tech'
+    'envi'
+    'nasa'
+    'phys'
+    'heal';
 }
 
 /* =================
@@ -91,21 +117,21 @@ img {
 }
 
 @media (min-width: 500px) {
-  main {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .technology {
-    grid-column: span 2;
-  }
-  .environment {
-  }
-  .nasa {
-    grid-row: span 2;
-  }
-  .physics {
-  }
-  .health {
-    grid-column: span 2;
-  }
+    main {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: 
+        "tech tech"
+        "envi nasa"
+        "phys nasa"
+        "heal heal";
+    } 
+}
+
+@media (min-width: 870px) {
+    main {
+        grid-template-columns: repeat(12, 1fr);
+        grid-template-areas: 
+        "tech tech tech tech tech tech envi envi envi nasa nasa nasa"
+        "phys phys phys heal heal heal heal heal heal nasa nasa nasa";
+    }
 }
